@@ -20,7 +20,6 @@
     --warning: #ffb800;
     --text: #e8ecff;
     --text-dim: #8a94c4;
-    --glow: 0 0 20px rgba(0, 212, 255, 0.5);
   }
 
   body {
@@ -36,7 +35,6 @@
     line-height: 1.5;
   }
 
-  /* ==================== ANIMATED BACKGROUND GRID ==================== */
   body::before {
     content: '';
     position: fixed;
@@ -55,7 +53,6 @@
     100% { transform: translate(40px, 40px); }
   }
 
-  /* ==================== LAYOUT ==================== */
   .app {
     position: relative;
     z-index: 1;
@@ -88,27 +85,15 @@
     flex-wrap: wrap;
   }
 
-  .hud-item {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
+  .hud-item { display: flex; flex-direction: column; gap: 2px; }
   .hud-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--text-dim);
-    font-weight: 600;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--text-dim); font-weight: 600;
   }
-
   .hud-value {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--accent);
+    font-size: 20px; font-weight: 800; color: var(--accent);
     font-variant-numeric: tabular-nums;
   }
-
   .hud-value.danger { color: var(--danger); animation: pulse 1s infinite; }
 
   @keyframes pulse {
@@ -116,25 +101,17 @@
     50% { opacity: 0.5; }
   }
 
-  /* ==================== TITLE SCREEN ==================== */
+  /* ==================== TITLE ==================== */
   .title-screen {
-    text-align: center;
-    padding: 40px 20px;
-    min-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    text-align: center; padding: 40px 20px; min-height: 90vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
   }
 
   .game-logo {
-    font-size: clamp(36px, 8vw, 72px);
-    font-weight: 900;
-    letter-spacing: 3px;
+    font-size: clamp(36px, 8vw, 72px); font-weight: 900; letter-spacing: 3px;
     background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
     background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: gradientShift 4s ease infinite;
     margin-bottom: 8px;
@@ -147,16 +124,12 @@
   }
 
   .game-subtitle {
-    font-size: 16px;
-    color: var(--text-dim);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 40px;
+    font-size: 16px; color: var(--text-dim); letter-spacing: 4px;
+    text-transform: uppercase; margin-bottom: 40px;
   }
 
   .chip-icon {
-    font-size: 80px;
-    margin-bottom: 20px;
+    font-size: 80px; margin-bottom: 20px;
     animation: float 3s ease-in-out infinite;
     filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.6));
   }
@@ -168,91 +141,201 @@
 
   /* ==================== BUTTONS ==================== */
   .btn {
-    padding: 14px 32px;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    font-family: inherit;
-    letter-spacing: 0.5px;
-    position: relative;
-    overflow: hidden;
+    padding: 14px 32px; border: none; border-radius: 12px;
+    font-size: 16px; font-weight: 700; cursor: pointer;
+    transition: all 0.25s ease; font-family: inherit;
+    letter-spacing: 0.5px; position: relative; overflow: hidden;
   }
 
   .btn-primary {
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    color: #fff;
-    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+    color: #fff; box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
   }
-
   .btn-primary:hover:not(:disabled) {
     transform: translateY(-3px);
     box-shadow: 0 12px 32px rgba(0, 212, 255, 0.5);
   }
-
-  .btn-primary:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
 
   .btn-secondary {
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--text);
+    background: rgba(255, 255, 255, 0.08); color: var(--text);
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
-
   .btn-secondary:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15); transform: translateY(-2px);
+  }
+
+  .btn-danger {
+    background: linear-gradient(135deg, var(--danger), #c8102e);
+    color: #fff; box-shadow: 0 8px 24px rgba(255, 59, 92, 0.3);
+  }
+  .btn-danger:hover:not(:disabled) { transform: translateY(-3px); }
+
+  .btn-success {
+    background: linear-gradient(135deg, var(--success), #00b894);
+    color: #0a0e27; box-shadow: 0 8px 24px rgba(0, 255, 136, 0.3);
   }
 
   .btn:active:not(:disabled) { transform: scale(0.97); }
+  .btn-sm { padding: 8px 16px; font-size: 13px; }
 
-  /* ==================== SETUP SCREEN ==================== */
-  .setup-card {
-    background: rgba(20, 26, 58, 0.9);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(0, 212, 255, 0.25);
-    border-radius: 20px;
-    padding: 32px;
-    max-width: 640px;
-    margin: 40px auto;
+  /* ==================== LOGIN SCREEN ==================== */
+  .login-container {
+    max-width: 720px; margin: 30px auto;
+  }
+
+  .login-tabs {
+    display: flex; gap: 8px; margin-bottom: 24px; justify-content: center;
+  }
+
+  .login-tab {
+    padding: 12px 32px; border-radius: 12px 12px 0 0;
+    background: rgba(20, 26, 58, 0.6); border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none; color: var(--text-dim);
+    font-size: 15px; font-weight: 700; cursor: pointer;
+    transition: all 0.25s; font-family: inherit;
+  }
+
+  .login-tab.active {
+    background: var(--bg-panel); color: var(--accent);
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 -4px 20px rgba(0, 212, 255, 0.15);
+  }
+
+  .login-card {
+    background: var(--bg-panel); border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 0 20px 20px 20px; padding: 32px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   }
 
-  .setup-title {
-    font-size: 24px;
-    font-weight: 800;
-    margin-bottom: 6px;
-    color: var(--accent);
+  .login-title {
+    font-size: 22px; font-weight: 800; color: var(--accent); margin-bottom: 6px;
+  }
+  .login-desc { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-dim); margin-bottom: 8px;
+  }
+  .form-group input, .form-group select {
+    width: 100%; padding: 14px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px; color: var(--text);
+    font-size: 15px; font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus {
+    outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.15);
   }
 
-  .setup-desc {
-    font-size: 14px;
-    color: var(--text-dim);
-    margin-bottom: 24px;
+  .login-error {
+    padding: 12px 16px; border-radius: 10px; margin-bottom: 16px;
+    background: rgba(255, 59, 92, 0.15);
+    border: 1px solid rgba(255, 59, 92, 0.4);
+    color: var(--danger); font-size: 13px; font-weight: 600;
+    display: none;
   }
+  .login-error.show { display: block; animation: shake 0.4s; }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+  }
+
+  /* ==================== KELOMPOK SELECTION ==================== */
+  .kelompok-header {
+    text-align: center; margin-bottom: 24px;
+  }
+  .kelompok-header h2 {
+    font-size: 26px; font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 6px;
+  }
+  .kelompok-header p { color: var(--text-dim); font-size: 14px; }
+
+  .kelompok-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px; margin-bottom: 24px;
+  }
+
+  .kelompok-card {
+    padding: 18px 16px; background: rgba(20, 26, 58, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 14px;
+    cursor: pointer; transition: all 0.25s; text-align: left;
+    position: relative; overflow: hidden;
+  }
+
+  .kelompok-card:hover:not(.locked) {
+    transform: translateY(-4px); border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+  }
+
+  .kelompok-card.selected {
+    border-color: var(--success);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+    transform: scale(1.02);
+  }
+
+  .kelompok-card.locked {
+    opacity: 0.45; cursor: not-allowed;
+    background: rgba(20, 26, 58, 0.5);
+  }
+
+  .kelompok-num {
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;
+  }
+
+  .kelompok-title {
+    font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 10px;
+  }
+
+  .kelompok-members {
+    font-size: 12px; color: var(--text-dim); line-height: 1.6;
+  }
+
+  .kelompok-badge {
+    position: absolute; top: 10px; right: 10px;
+    padding: 3px 10px; border-radius: 999px;
+    font-size: 10px; font-weight: 800;
+    background: rgba(0, 255, 136, 0.15);
+    color: var(--success);
+  }
+
+  .kelompok-badge.locked-badge {
+    background: rgba(255, 59, 92, 0.15); color: var(--danger);
+  }
+
+  .kelompok-badge.taken-badge {
+    background: rgba(255, 184, 0, 0.15); color: var(--warning);
+  }
+
+  /* ==================== SETUP (Admin) ==================== */
+  .setup-card {
+    background: rgba(20, 26, 58, 0.9); backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 212, 255, 0.25); border-radius: 20px;
+    padding: 32px; max-width: 720px; margin: 40px auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  .setup-title { font-size: 24px; font-weight: 800; margin-bottom: 6px; color: var(--accent); }
+  .setup-desc { font-size: 14px; color: var(--text-dim); margin-bottom: 24px; }
 
   .team-input {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
   }
 
   .team-badge {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 18px;
-    flex-shrink: 0;
-    color: #fff;
+    width: 42px; height: 42px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px; flex-shrink: 0; color: #fff;
   }
 
   .team-badge.t1 { background: linear-gradient(135deg, #00d4ff, #0088ff); }
@@ -261,84 +344,47 @@
   .team-badge.t4 { background: linear-gradient(135deg, #ffb800, #ff8800); }
 
   .team-input input {
-    flex: 1;
-    padding: 12px 16px;
+    flex: 1; padding: 12px 16px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 10px;
-    color: var(--text);
-    font-size: 15px;
-    font-family: inherit;
+    border-radius: 10px; color: var(--text);
+    font-size: 15px; font-family: inherit;
     transition: border-color 0.2s;
   }
-
   .team-input input:focus {
-    outline: none;
-    border-color: var(--accent);
+    outline: none; border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.15);
   }
 
   .btn-remove {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    background: rgba(255, 59, 92, 0.15);
-    color: var(--danger);
+    width: 42px; height: 42px; border-radius: 10px;
+    background: rgba(255, 59, 92, 0.15); color: var(--danger);
     border: 1px solid rgba(255, 59, 92, 0.3);
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.2s;
-    flex-shrink: 0;
+    font-size: 20px; cursor: pointer; transition: all 0.2s; flex-shrink: 0;
   }
+  .btn-remove:hover { background: rgba(255, 59, 92, 0.3); }
 
-  .btn-remove:hover {
-    background: rgba(255, 59, 92, 0.3);
-  }
-
-  .setup-actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 24px;
-    flex-wrap: wrap;
-  }
-
+  .setup-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
   .setup-actions .btn { flex: 1; min-width: 140px; }
 
-  /* ==================== BOARD SCREEN (MAIN GAME) ==================== */
-  .board-header {
-    text-align: center;
-    margin-bottom: 24px;
-  }
-
+  /* ==================== BOARD ==================== */
+  .board-header { text-align: center; margin-bottom: 24px; }
   .board-header h2 {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--accent);
-    margin-bottom: 4px;
+    font-size: 24px; font-weight: 800; color: var(--accent); margin-bottom: 4px;
   }
-
-  .board-header p {
-    font-size: 13px;
-    color: var(--text-dim);
-  }
+  .board-header p { font-size: 13px; color: var(--text-dim); }
 
   .scoreboard {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
-    margin-bottom: 24px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px; margin-bottom: 24px;
   }
 
   .score-card {
     background: rgba(20, 26, 58, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
-    padding: 16px;
-    text-align: center;
-    transition: all 0.3s;
-    position: relative;
+    border-radius: 14px; padding: 16px; text-align: center;
+    transition: all 0.3s; position: relative;
   }
-
   .score-card.active-turn {
     border-color: var(--accent);
     box-shadow: 0 0 24px rgba(0, 212, 255, 0.35);
@@ -346,344 +392,185 @@
   }
 
   .score-card .name {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 13px; font-weight: 700; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-
   .score-card .score {
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--accent);
+    font-size: 28px; font-weight: 900; color: var(--accent);
     font-variant-numeric: tabular-nums;
   }
-
   .score-card .lives {
-    margin-top: 6px;
-    font-size: 14px;
-    letter-spacing: 2px;
+    margin-top: 6px; font-size: 14px; letter-spacing: 2px;
   }
 
   .levels-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
-    margin-bottom: 24px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px; margin-bottom: 24px;
   }
 
   .level-card {
     background: rgba(20, 26, 58, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
-    padding: 16px 12px;
-    cursor: pointer;
-    transition: all 0.25s;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    border-radius: 14px; padding: 16px 12px;
+    cursor: pointer; transition: all 0.25s;
+    text-align: center; position: relative; overflow: hidden;
   }
-
   .level-card:hover:not(.done) {
-    transform: translateY(-4px);
-    border-color: var(--accent);
+    transform: translateY(-4px); border-color: var(--accent);
     box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
   }
-
-  .level-card.done {
-    opacity: 0.45;
-    cursor: not-allowed;
-  }
-
+  .level-card.done { opacity: 0.45; cursor: not-allowed; }
   .level-card.done::after {
-    content: '✓';
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    color: var(--success);
-    background: rgba(0, 255, 136, 0.08);
-    font-weight: 900;
+    content: '✓'; position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px; color: var(--success);
+    background: rgba(0, 255, 136, 0.08); font-weight: 900;
   }
 
   .level-card .num {
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--accent);
-    margin-bottom: 4px;
+    font-size: 22px; font-weight: 900; color: var(--accent); margin-bottom: 4px;
   }
-
   .level-card .name {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-dim);
-    line-height: 1.3;
-    min-height: 28px;
+    font-size: 11px; font-weight: 600; color: var(--text-dim);
+    line-height: 1.3; min-height: 28px;
   }
-
   .level-card .pts {
-    font-size: 11px;
-    margin-top: 6px;
-    color: var(--warning);
-    font-weight: 700;
+    font-size: 11px; margin-top: 6px; color: var(--warning); font-weight: 700;
   }
-
   .level-card.lv-easy { border-left: 3px solid var(--success); }
   .level-card.lv-med { border-left: 3px solid var(--warning); }
   .level-card.lv-hard { border-left: 3px solid var(--danger); }
 
   .board-footer {
-    text-align: center;
-    color: var(--text-dim);
-    font-size: 12px;
-    padding: 12px;
-    line-height: 1.8;
+    text-align: center; color: var(--text-dim); font-size: 12px;
+    padding: 12px; line-height: 1.8;
   }
 
-  /* ==================== SPIN WHEEL MODAL ==================== */
+  /* ==================== MODAL ==================== */
   .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    padding: 20px;
+    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px); display: none;
+    align-items: center; justify-content: center;
+    z-index: 100; padding: 20px;
   }
-
   .modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
 
   .spin-modal {
     background: var(--bg-panel);
     border: 1px solid rgba(0, 212, 255, 0.3);
-    border-radius: 20px;
-    padding: 28px;
-    max-width: 480px;
-    width: 100%;
-    text-align: center;
+    border-radius: 20px; padding: 28px;
+    max-width: 480px; width: 100%; text-align: center;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   }
-
-  .spin-modal h3 {
-    font-size: 20px;
-    margin-bottom: 6px;
-    color: var(--accent);
-  }
-
-  .spin-modal p {
-    font-size: 13px;
-    color: var(--text-dim);
-    margin-bottom: 20px;
-  }
+  .spin-modal h3 { font-size: 20px; margin-bottom: 6px; color: var(--accent); }
+  .spin-modal p { font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
 
   .wheel-container {
-    position: relative;
-    width: 240px;
-    height: 240px;
-    margin: 0 auto 20px;
+    position: relative; width: 240px; height: 240px; margin: 0 auto 20px;
   }
-
   .wheel-pointer {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 28px;
-    color: var(--warning);
-    z-index: 10;
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    font-size: 28px; color: var(--warning); z-index: 10;
     filter: drop-shadow(0 0 8px rgba(255, 184, 0, 0.8));
   }
-
   .wheel {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
+    width: 100%; height: 100%; border-radius: 50%;
     transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
     position: relative;
     border: 4px solid rgba(0, 212, 255, 0.4);
     box-shadow: 0 0 40px rgba(0, 212, 255, 0.3), inset 0 0 40px rgba(0, 0, 0, 0.5);
   }
-
   .wheel-segment {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 800;
-    color: #fff;
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; color: #fff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    padding-left: 100px;
-    text-align: left;
-    transform-origin: center;
+    padding-left: 100px; text-align: left; transform-origin: center;
   }
-
-  .wheel-label {
-    width: 90px;
-    font-size: 11px;
-    line-height: 1.2;
-  }
-
+  .wheel-label { width: 90px; font-size: 11px; line-height: 1.2; }
   .spin-result {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--success);
-    min-height: 24px;
-    margin-bottom: 16px;
+    font-size: 16px; font-weight: 800; color: var(--success);
+    min-height: 24px; margin-bottom: 16px;
   }
 
-  /* ==================== QUESTION SCREEN ==================== */
-  .question-wrap {
-    max-width: 820px;
-    margin: 0 auto;
-  }
+  /* ==================== QUESTION ==================== */
+  .question-wrap { max-width: 820px; margin: 0 auto; }
 
   .q-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-    gap: 10px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 16px; flex-wrap: wrap; gap: 10px;
   }
-
   .q-badge {
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 11px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1px;
   }
-
   .q-badge.easy { background: rgba(0, 255, 136, 0.15); color: var(--success); border: 1px solid rgba(0,255,136,0.3); }
   .q-badge.med { background: rgba(255, 184, 0, 0.15); color: var(--warning); border: 1px solid rgba(255,184,0,0.3); }
   .q-badge.hard { background: rgba(255, 59, 92, 0.15); color: var(--danger); border: 1px solid rgba(255,59,92,0.3); }
 
   .q-timer {
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--accent);
+    font-size: 22px; font-weight: 900; color: var(--accent);
     font-variant-numeric: tabular-nums;
   }
-
   .q-timer.danger { color: var(--danger); animation: pulse 0.6s infinite; }
 
   .timer-bar {
-    height: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    overflow: hidden;
-    margin-bottom: 20px;
+    height: 6px; background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px; overflow: hidden; margin-bottom: 20px;
   }
-
   .timer-bar-fill {
     height: 100%;
     background: linear-gradient(90deg, var(--accent), var(--accent-2));
-    transition: width 1s linear;
-    border-radius: 3px;
+    transition: width 1s linear; border-radius: 3px;
   }
-
-  .timer-bar-fill.danger {
-    background: linear-gradient(90deg, var(--danger), var(--warning));
-  }
+  .timer-bar-fill.danger { background: linear-gradient(90deg, var(--danger), var(--warning)); }
 
   .q-card {
     background: rgba(20, 26, 58, 0.9);
     border: 1px solid rgba(0, 212, 255, 0.2);
-    border-radius: 18px;
-    padding: 28px;
-    margin-bottom: 20px;
+    border-radius: 18px; padding: 28px; margin-bottom: 20px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
   }
-
-  .q-text {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.6;
-    margin-bottom: 8px;
-  }
-
+  .q-text { font-size: 18px; font-weight: 600; line-height: 1.6; margin-bottom: 8px; }
   .q-hint {
-    font-size: 13px;
-    color: var(--text-dim);
-    font-style: italic;
-    margin-top: 8px;
-    padding-top: 8px;
+    font-size: 13px; color: var(--text-dim); font-style: italic;
+    margin-top: 8px; padding-top: 8px;
     border-top: 1px dashed rgba(255, 255, 255, 0.1);
     display: none;
   }
-
   .q-hint.show { display: block; }
 
-  /* Options */
-  .options {
-    display: grid;
-    gap: 12px;
-  }
-
+  .options { display: grid; gap: 12px; }
   .option {
     padding: 16px 20px;
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    text-align: left;
-    color: var(--text);
-    font-family: inherit;
-    width: 100%;
+    border-radius: 12px; cursor: pointer; transition: all 0.2s;
+    font-size: 15px; display: flex; align-items: center; gap: 14px;
+    text-align: left; color: var(--text); font-family: inherit; width: 100%;
   }
-
   .option:hover:not(:disabled) {
     background: rgba(0, 212, 255, 0.1);
-    border-color: var(--accent);
-    transform: translateX(5px);
+    border-color: var(--accent); transform: translateX(5px);
   }
-
   .option:disabled { cursor: not-allowed; }
-
   .option .opt-label {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(0, 212, 255, 0.15);
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    flex-shrink: 0;
+    width: 32px; height: 32px; border-radius: 8px;
+    background: rgba(0, 212, 255, 0.15); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; flex-shrink: 0;
   }
-
   .option.correct {
-    background: rgba(0, 255, 136, 0.15);
-    border-color: var(--success);
+    background: rgba(0, 255, 136, 0.15); border-color: var(--success);
     animation: correctPop 0.5s ease;
   }
-
   .option.correct .opt-label { background: var(--success); color: #0a0e27; }
-
   .option.wrong {
-    background: rgba(255, 59, 92, 0.15);
-    border-color: var(--danger);
+    background: rgba(255, 59, 92, 0.15); border-color: var(--danger);
     animation: shake 0.5s ease;
   }
-
   .option.wrong .opt-label { background: var(--danger); color: #fff; }
 
   @keyframes correctPop {
@@ -692,196 +579,176 @@
     100% { transform: scale(1); }
   }
 
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20% { transform: translateX(-10px); }
-    40% { transform: translateX(10px); }
-    60% { transform: translateX(-6px); }
-    80% { transform: translateX(6px); }
-  }
-
-  /* Feedback */
   .feedback {
-    margin-top: 16px;
-    padding: 14px 18px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 600;
-    display: none;
+    margin-top: 16px; padding: 14px 18px; border-radius: 12px;
+    font-size: 14px; font-weight: 600; display: none;
     animation: fadeIn 0.4s ease;
   }
-
   .feedback.show { display: block; }
-
   .feedback.ok {
     background: rgba(0, 255, 136, 0.1);
-    border: 1px solid rgba(0, 255, 136, 0.3);
-    color: var(--success);
+    border: 1px solid rgba(0, 255, 136, 0.3); color: var(--success);
   }
-
   .feedback.no {
     background: rgba(255, 59, 92, 0.1);
-    border: 1px solid rgba(255, 59, 92, 0.3);
-    color: var(--danger);
+    border: 1px solid rgba(255, 59, 92, 0.3); color: var(--danger);
   }
 
-  .feedback.info {
-    background: rgba(0, 212, 255, 0.1);
-    border: 1px solid rgba(0, 212, 255, 0.3);
-    color: var(--accent);
-  }
-
-  /* Power-up bar */
   .powerup-bar {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    display: flex; gap: 10px; justify-content: center;
+    flex-wrap: wrap; margin-top: 20px;
   }
-
   .powerup-btn {
-    padding: 10px 16px;
-    border-radius: 10px;
+    padding: 10px 16px; border-radius: 10px;
     background: rgba(123, 47, 247, 0.15);
     border: 1px solid rgba(123, 47, 247, 0.4);
-    color: var(--text);
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-family: inherit;
+    color: var(--text); font-size: 13px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s; font-family: inherit;
   }
-
   .powerup-btn:hover:not(:disabled) {
-    background: rgba(123, 47, 247, 0.3);
-    transform: translateY(-2px);
+    background: rgba(123, 47, 247, 0.3); transform: translateY(-2px);
   }
-
-  .powerup-btn:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-  }
-
+  .powerup-btn:disabled { opacity: 0.35; cursor: not-allowed; }
   .powerup-btn.used {
     background: rgba(0, 255, 136, 0.15);
-    border-color: var(--success);
-    color: var(--success);
+    border-color: var(--success); color: var(--success);
   }
 
-  /* ==================== RESULT / LEADERBOARD ==================== */
-  .result-wrap {
-    max-width: 700px;
-    margin: 20px auto;
-    text-align: center;
-  }
-
+  /* ==================== RESULT ==================== */
+  .result-wrap { max-width: 700px; margin: 20px auto; text-align: center; }
   .result-title {
-    font-size: 36px;
-    font-weight: 900;
+    font-size: 36px; font-weight: 900;
     background: linear-gradient(135deg, var(--warning), var(--accent-3));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 8px;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 8px;
   }
+  .result-sub { color: var(--text-dim); margin-bottom: 28px; }
 
-  .result-sub {
-    color: var(--text-dim);
-    margin-bottom: 28px;
-  }
-
-  .leaderboard {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-
+  .leaderboard { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
   .lb-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
-    background: rgba(20, 26, 58, 0.9);
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: left;
-    transition: all 0.3s;
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px; background: rgba(20, 26, 58, 0.9);
+    border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left; transition: all 0.3s;
   }
-
   .lb-row.first {
     border-color: var(--warning);
     box-shadow: 0 0 30px rgba(255, 184, 0, 0.3);
     transform: scale(1.02);
   }
+  .lb-rank { font-size: 28px; font-weight: 900; width: 50px; text-align: center; }
+  .lb-name { flex: 1; font-weight: 700; font-size: 16px; }
+  .lb-score {
+    font-size: 24px; font-weight: 900; color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .lb-lives { font-size: 16px; letter-spacing: 2px; }
 
-  .lb-rank {
-    font-size: 28px;
-    font-weight: 900;
-    width: 50px;
+  /* ==================== ADMIN PANEL ==================== */
+  .admin-container { max-width: 1100px; margin: 0 auto; }
+
+  .admin-header {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .admin-header h2 {
+    font-size: 24px; font-weight: 800; color: var(--accent);
+  }
+
+  .admin-stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px; margin-bottom: 24px;
+  }
+
+  .stat-card {
+    background: rgba(20, 26, 58, 0.9);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 14px; padding: 16px;
     text-align: center;
   }
-
-  .lb-name {
-    flex: 1;
-    font-weight: 700;
-    font-size: 16px;
+  .stat-label {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 1.2px; color: var(--text-dim);
+    font-weight: 700; margin-bottom: 6px;
   }
-
-  .lb-score {
-    font-size: 24px;
-    font-weight: 900;
-    color: var(--accent);
+  .stat-value {
+    font-size: 28px; font-weight: 900; color: var(--accent);
     font-variant-numeric: tabular-nums;
   }
 
-  .lb-lives {
-    font-size: 16px;
-    letter-spacing: 2px;
+  .admin-table-wrap {
+    background: rgba(20, 26, 58, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px; overflow: hidden; margin-bottom: 20px;
   }
+
+  .admin-table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+  }
+  .admin-table thead {
+    background: rgba(0, 212, 255, 0.08);
+    border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+  }
+  .admin-table th {
+    padding: 12px 14px; text-align: left;
+    font-weight: 800; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--accent); white-space: nowrap;
+  }
+  .admin-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text);
+  }
+  .admin-table tbody tr:hover {
+    background: rgba(0, 212, 255, 0.04);
+  }
+  .admin-table tbody tr:last-child td { border-bottom: none; }
+
+  .admin-empty {
+    padding: 40px 20px; text-align: center;
+    color: var(--text-dim); font-size: 14px;
+  }
+
+  .admin-actions {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;
+  }
+
+  .badge-soft {
+    display: inline-block; padding: 3px 10px; border-radius: 999px;
+    font-size: 11px; font-weight: 800;
+  }
+  .badge-soft.gold { background: rgba(255, 184, 0, 0.15); color: var(--warning); }
+  .badge-soft.silver { background: rgba(200, 200, 200, 0.15); color: #c8c8c8; }
+  .badge-soft.bronze { background: rgba(205, 127, 50, 0.15); color: #cd7f32; }
+  .badge-soft.done { background: rgba(0, 255, 136, 0.15); color: var(--success); }
+  .badge-soft.pending { background: rgba(255, 184, 0, 0.15); color: var(--warning); }
 
   /* ==================== TOAST ==================== */
   .toast {
-    position: fixed;
-    top: 24px;
-    left: 50%;
+    position: fixed; top: 24px; left: 50%;
     transform: translateX(-50%) translateY(-100px);
     background: var(--bg-panel-2);
-    border: 1px solid var(--accent);
-    color: var(--text);
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-weight: 700;
-    z-index: 999;
+    border: 1px solid var(--accent); color: var(--text);
+    padding: 14px 24px; border-radius: 12px;
+    font-weight: 700; z-index: 999;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
-    max-width: 90vw;
-    text-align: center;
+    max-width: 90vw; text-align: center;
   }
-
   .toast.show { transform: translateX(-50%) translateY(0); }
-
   .toast.ok { border-color: var(--success); }
   .toast.no { border-color: var(--danger); }
   .toast.warn { border-color: var(--warning); }
 
   /* ==================== CONFETTI ==================== */
   .confetti {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    top: -20px;
-    z-index: 200;
-    pointer-events: none;
+    position: fixed; width: 10px; height: 10px; top: -20px;
+    z-index: 200; pointer-events: none;
     animation: confettiFall linear forwards;
   }
-
   @keyframes confettiFall {
-    to {
-      transform: translateY(110vh) rotate(720deg);
-      opacity: 0;
-    }
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
   }
 
   /* ==================== RESPONSIVE ==================== */
@@ -895,33 +762,136 @@
     .setup-card { padding: 20px; }
     .wheel-container { width: 200px; height: 200px; }
     .wheel-label { width: 70px; font-size: 10px; }
+    .login-card { padding: 20px; }
+    .kelompok-grid { grid-template-columns: 1fr 1fr; }
+    .admin-table { font-size: 11px; }
+    .admin-table th, .admin-table td { padding: 8px 8px; }
   }
+
+  /* ==================== PRINT ==================== */
+  @media print {
+    body { background: #fff; color: #000; }
+    body::before { display: none; }
+    .app { padding: 0; }
+    .no-print { display: none !important; }
+    .admin-table-wrap { border: 1px solid #000; background: #fff; }
+    .admin-table thead { background: #eee; }
+    .admin-table th, .admin-table td { color: #000; border-bottom: 1px solid #ccc; }
+    .stat-card { border: 1px solid #000; background: #fff; }
+    .stat-value, .stat-label { color: #000; }
+    .badge-soft { border: 1px solid #000; }
+    .print-header {
+      display: block !important; text-align: center;
+      margin-bottom: 20px; padding-bottom: 10px;
+      border-bottom: 3px double #000;
+    }
+    .print-header h1 { font-size: 22px; color: #000; margin-bottom: 4px; }
+    .print-header p { font-size: 12px; color: #333; }
+  }
+
+  .print-header { display: none; }
 </style>
 </head>
 <body>
 
 <div class="app">
 
-  <!-- ==================== SCREEN 1: TITLE ==================== -->
+  <!-- ==================== SCREEN 0: TITLE ==================== -->
   <section id="screen-title" class="screen active">
     <div class="title-screen">
       <div class="chip-icon">🖥️</div>
       <h1 class="game-logo">VON NEUMANN<br>CHALLENGE</h1>
       <p class="game-subtitle">Arsitektur Komputer & Sistem Operasi</p>
-      <button class="btn btn-primary" style="font-size:18px; padding:16px 48px;" onclick="goToSetup()">
-        ▶ MULAI PERMAINAN
+      <button class="btn btn-primary" style="font-size:18px; padding:16px 48px;" onclick="showScreen('screen-login')">
+        ▶ MASUK
       </button>
       <p style="margin-top:32px; color:var(--text-dim); font-size:12px; max-width:400px;">
-        9 Level • 45 Menit • Uji pemahamanmu tentang CPU, Memori, Siklus Instruksi & Sistem Operasi
+        9 Level • 45 Menit • 12 Kelompok • Sistem Login Admin & Siswa
       </p>
     </div>
   </section>
 
-  <!-- ==================== SCREEN 2: SETUP ==================== -->
+  <!-- ==================== SCREEN 1: LOGIN ==================== -->
+  <section id="screen-login" class="screen">
+    <div class="login-container">
+      <div class="login-tabs">
+        <button class="login-tab active" id="tab-siswa" onclick="switchLoginTab('siswa')">👨‍🎓 Siswa</button>
+        <button class="login-tab" id="tab-admin" onclick="switchLoginTab('admin')">🔐 Admin</button>
+      </div>
+
+      <!-- SISWA FORM -->
+      <div class="login-card" id="form-siswa">
+        <h2 class="login-title">Login Siswa</h2>
+        <p class="login-desc">Masukkan nama lengkap dan kelasmu untuk masuk ke permainan.</p>
+
+        <div class="login-error" id="err-siswa"></div>
+
+        <div class="form-group">
+          <label for="siswa-nama">Nama Lengkap</label>
+          <input type="text" id="siswa-nama" placeholder="Contoh: Budi Santoso" maxlength="40" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label for="siswa-kelas">Kelas</label>
+          <input type="text" id="siswa-kelas" placeholder="Contoh: X IPA 1" maxlength="20" autocomplete="off">
+        </div>
+
+        <button class="btn btn-primary" style="width:100%;" onclick="loginSiswa()">
+          Masuk sebagai Siswa →
+        </button>
+      </div>
+
+      <!-- ADMIN FORM -->
+      <div class="login-card" id="form-admin" style="display:none;">
+        <h2 class="login-title">Login Admin</h2>
+        <p class="login-desc">Hanya untuk guru/admin yang mengelola permainan.</p>
+
+        <div class="login-error" id="err-admin"></div>
+
+        <div class="form-group">
+          <label for="admin-user">Username</label>
+          <input type="text" id="admin-user" placeholder="admin" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label for="admin-pass">Password</label>
+          <input type="password" id="admin-pass" placeholder="••••••••" autocomplete="off"
+                 onkeydown="if(event.key==='Enter') loginAdmin()">
+        </div>
+
+        <button class="btn btn-primary" style="width:100%;" onclick="loginAdmin()">
+          Masuk sebagai Admin →
+        </button>
+      </div>
+
+      <div style="text-align:center; margin-top:20px;">
+        <button class="btn btn-secondary btn-sm" onclick="showScreen('screen-title')">← Kembali</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 2: PILIH KELOMPOK ==================== -->
+  <section id="screen-kelompok" class="screen">
+    <div class="kelompok-header">
+      <h2>📚 Pilih Kelompokmu</h2>
+      <p id="kelompok-welcome">Selamat datang! Pilih salah satu dari 12 kelompok yang tersedia.</p>
+    </div>
+
+    <div class="kelompok-grid" id="kelompok-grid"></div>
+
+    <div style="text-align:center; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <button class="btn btn-secondary btn-sm" onclick="logoutSiswa()">← Logout</button>
+      <button class="btn btn-primary btn-sm" id="btn-mulai-kelompok" onclick="konfirmasiKelompok()" disabled>
+        Mulai Bermain →
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 3: SETUP TIM (dari kelompok) ==================== -->
   <section id="screen-setup" class="screen">
     <div class="setup-card">
       <h2 class="setup-title">⚙️ Pengaturan Tim</h2>
-      <p class="setup-desc">Masukkan nama tim (2–4 tim). Setiap tim memiliki 3 nyawa ❤️❤️❤️</p>
+      <p class="setup-desc">Anggota kelompok terdeteksi. Anda dapat mengubah nama tim jika diperlukan.</p>
 
       <div id="team-list"></div>
 
@@ -929,10 +899,14 @@
         <button class="btn btn-secondary" onclick="addTeam()" id="btn-add">+ Tambah Tim</button>
         <button class="btn btn-primary" onclick="startGame()">🚀 Mulai Game</button>
       </div>
+
+      <div style="text-align:center; margin-top:16px;">
+        <button class="btn btn-secondary btn-sm" onclick="backToKelompok()">← Ganti Kelompok</button>
+      </div>
     </div>
   </section>
 
-  <!-- ==================== SCREEN 3: BOARD ==================== -->
+  <!-- ==================== SCREEN 4: BOARD ==================== -->
   <section id="screen-board" class="screen">
     <div class="hud">
       <div class="hud-item">
@@ -947,6 +921,10 @@
         <span class="hud-label">Giliran</span>
         <span class="hud-value" id="hud-turn">-</span>
       </div>
+      <div class="hud-item">
+        <span class="hud-label">Kelompok</span>
+        <span class="hud-value" id="hud-kelompok">-</span>
+      </div>
     </div>
 
     <div class="board-header">
@@ -955,7 +933,6 @@
     </div>
 
     <div class="scoreboard" id="scoreboard"></div>
-
     <div class="levels-grid" id="levels-grid"></div>
 
     <div class="board-footer">
@@ -963,7 +940,7 @@
     </div>
   </section>
 
-  <!-- ==================== SCREEN 4: QUESTION ==================== -->
+  <!-- ==================== SCREEN 5: QUESTION ==================== -->
   <section id="screen-question" class="screen">
     <div class="question-wrap">
       <div class="hud">
@@ -999,7 +976,6 @@
       </div>
 
       <div class="options" id="options"></div>
-
       <div class="feedback" id="feedback"></div>
 
       <div class="powerup-bar" id="powerup-bar">
@@ -1016,17 +992,87 @@
     </div>
   </section>
 
-  <!-- ==================== SCREEN 5: RESULT ==================== -->
+  <!-- ==================== SCREEN 6: RESULT ==================== -->
   <section id="screen-result" class="screen">
     <div class="result-wrap">
       <div class="result-title">🏆 HASIL AKHIR</div>
-      <p class="result-sub">Terima kasih telah menyelesaikan Von Neumann Challenge!</p>
+      <p class="result-sub" id="result-sub">Terima kasih telah menyelesaikan Von Neumann Challenge!</p>
 
       <div class="leaderboard" id="leaderboard"></div>
 
-      <button class="btn btn-primary" onclick="location.reload()">
-        🔄 Main Lagi
-      </button>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-secondary" onclick="logoutSiswa()">← Logout</button>
+        <button class="btn btn-primary" onclick="location.reload()">🔄 Main Lagi</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 7: ADMIN PANEL ==================== -->
+  <section id="screen-admin" class="screen">
+    <div class="admin-container">
+      <div class="admin-header">
+        <div>
+          <h2>🔐 Panel Admin</h2>
+          <p style="color:var(--text-dim); font-size:13px;">Rekap hasil pekerjaan siswa</p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;" class="no-print">
+          <button class="btn btn-secondary btn-sm" onclick="loadAdminData()">🔄 Refresh</button>
+          <button class="btn btn-danger btn-sm" onclick="clearAllData()">🗑️ Hapus Semua Data</button>
+          <button class="btn btn-secondary btn-sm" onclick="logoutAdmin()">← Logout</button>
+        </div>
+      </div>
+
+      <div class="print-header">
+        <h1>REKAP HASIL VON NEUMANN CHALLENGE</h1>
+        <p>Dicetak: <span id="print-date"></span></p>
+      </div>
+
+      <div class="admin-stats" id="admin-stats">
+        <div class="stat-card">
+          <div class="stat-label">Total Siswa</div>
+          <div class="stat-value" id="stat-total">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Kelompok</div>
+          <div class="stat-value" id="stat-kelompok">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Sudah Bermain</div>
+          <div class="stat-value" id="stat-played">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Rata-rata Skor</div>
+          <div class="stat-value" id="stat-avg">0</div>
+        </div>
+      </div>
+
+      <div class="admin-actions no-print">
+        <button class="btn btn-primary btn-sm" onclick="window.print()">🖨️ Cetak Rekap</button>
+        <button class="btn btn-success btn-sm" onclick="exportCSV()">📥 Export CSV</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="admin-table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama Siswa</th>
+              <th>Kelas</th>
+              <th>Kelompok</th>
+              <th>Skor Tim</th>
+              <th>Nyawa</th>
+              <th>Level Selesai</th>
+              <th>Status</th>
+              <th>Waktu</th>
+            </tr>
+          </thead>
+          <tbody id="admin-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="admin-empty" id="admin-empty" style="display:none;">
+        📭 Belum ada data siswa yang bermain. Data akan muncul setelah siswa menyelesaikan permainan.
+      </div>
     </div>
   </section>
 
@@ -1037,14 +1083,10 @@
   <div class="spin-modal">
     <h3>🎡 Putar Roda Bonus</h3>
     <p>Roda akan menentukan bonus poin atau waktu untuk soal ini!</p>
-
     <div class="wheel-container">
       <div class="wheel-pointer">▼</div>
-      <div class="wheel" id="wheel">
-        <!-- Segments injected by JS -->
-      </div>
+      <div class="wheel" id="wheel"></div>
     </div>
-
     <div class="spin-result" id="spin-result"></div>
     <button class="btn btn-primary" id="btn-spin" onclick="spinWheel()">🎲 PUTAR!</button>
     <button class="btn btn-secondary" id="btn-skip-spin" onclick="skipSpin()" style="margin-top:8px; display:none;">
@@ -1058,17 +1100,27 @@
 
 <script>
 /* ============================================================
-   VON NEUMANN CHALLENGE — GAME LOGIC
+   VON NEUMANN CHALLENGE v2.0 — GAME LOGIC
    ============================================================ */
 
-/* ---------- GAME STATE ---------- */
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "A1B2C3de";
+const STORAGE_KEY = "vn_challenge_results_v2";
+
+/* ---------- STATE ---------- */
 const state = {
+  // Auth
+  currentUser: null,          // {nama, kelas} untuk siswa
+  isAdmin: false,
+  selectedKelompok: null,     // nomor kelompok 1-12
+
+  // Game
   teams: [],
   currentTeamIndex: 0,
   currentLevel: null,
   currentQuestionIndex: 0,
   currentQuestions: [],
-  totalTimeLeft: 45 * 60, // 45 minutes in seconds
+  totalTimeLeft: 45 * 60,
   totalTimerInterval: null,
   questionTimerInterval: null,
   questionTimeLeft: 0,
@@ -1079,7 +1131,15 @@ const state = {
   bonusTime: 0,
   completedLevels: new Set(),
   totalLevels: 9,
+  gameStartTime: null,
 };
+
+/* ---------- 12 KELOMPOK ---------- */
+const KELOMPOK_DATA = Array.from({ length: 12 }, (_, i) => ({
+  id: i + 1,
+  name: `Kelompok ${i + 1}`,
+  members: [] // akan diisi dari localStorage/siswa yang login
+}));
 
 /* ---------- LEVEL DATA ---------- */
 const LEVELS = [
@@ -1157,7 +1217,7 @@ const LEVELS = [
   },
 ];
 
-/* ---------- WHEEL SEGMENTS ---------- */
+/* ---------- WHEEL ---------- */
 const WHEEL_SEGMENTS = [
   { label: "x2 Poin!", type: "multiplier", value: 2, color: "#00d4ff" },
   { label: "+30 Detik", type: "time", value: 30, color: "#7b2ff7" },
@@ -1168,7 +1228,7 @@ const WHEEL_SEGMENTS = [
 ];
 
 /* ============================================================
-   SCREEN NAVIGATION
+   SCREEN NAV
    ============================================================ */
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -1176,31 +1236,222 @@ function showScreen(id) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function goToSetup() {
-  showScreen('screen-setup');
-  if (state.teams.length === 0) {
-    addTeam(); addTeam();
+/* ============================================================
+   LOGIN LOGIC
+   ============================================================ */
+function switchLoginTab(tab) {
+  document.getElementById('tab-siswa').classList.toggle('active', tab === 'siswa');
+  document.getElementById('tab-admin').classList.toggle('active', tab === 'admin');
+  document.getElementById('form-siswa').style.display = tab === 'siswa' ? 'block' : 'none';
+  document.getElementById('form-admin').style.display = tab === 'admin' ? 'block' : 'none';
+  document.getElementById('err-siswa').classList.remove('show');
+  document.getElementById('err-admin').classList.remove('show');
+}
+
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 4000);
+}
+
+function loginSiswa() {
+  const nama = document.getElementById('siswa-nama').value.trim();
+  const kelas = document.getElementById('siswa-kelas').value.trim();
+
+  if (!nama) return showError('err-siswa', '❌ Nama tidak boleh kosong!');
+  if (nama.length < 2) return showError('err-siswa', '❌ Nama minimal 2 karakter!');
+  if (!kelas) return showError('err-siswa', '❌ Kelas tidak boleh kosong!');
+
+  state.currentUser = { nama, kelas };
+  state.isAdmin = false;
+  toast(`Selamat datang, ${nama}! 🎉`, 'ok');
+  renderKelompokGrid();
+  showScreen('screen-kelompok');
+}
+
+function loginAdmin() {
+  const user = document.getElementById('admin-user').value.trim();
+  const pass = document.getElementById('admin-pass').value;
+
+  if (user !== ADMIN_USER || pass !== ADMIN_PASS) {
+    return showError('err-admin', '❌ Username atau password salah!');
   }
-  renderTeamInputs();
+
+  state.isAdmin = true;
+  state.currentUser = { nama: 'Admin', kelas: '-' };
+  document.getElementById('admin-user').value = '';
+  document.getElementById('admin-pass').value = '';
+  toast('Login admin berhasil 🔐', 'ok');
+  loadAdminData();
+  showScreen('screen-admin');
+}
+
+function logoutSiswa() {
+  state.currentUser = null;
+  state.selectedKelompok = null;
+  document.getElementById('siswa-nama').value = '';
+  document.getElementById('siswa-kelas').value = '';
+  showScreen('screen-login');
+  switchLoginTab('siswa');
+}
+
+function logoutAdmin() {
+  state.isAdmin = false;
+  state.currentUser = null;
+  showScreen('screen-login');
+  switchLoginTab('admin');
 }
 
 /* ============================================================
-   SETUP: TEAM MANAGEMENT
+   KELOMPOK SELECTION
    ============================================================ */
-const TEAM_COLORS = ['t1', 't2', 't3', 't4'];
-const TEAM_NAMES = ['Tim Alpha', 'Tim Beta', 'Tim Gamma', 'Tim Delta'];
-
-function addTeam() {
-  if (state.teams.length >= 4) {
-    toast("Maksimal 4 tim!", "warn");
-    return;
+function getKelompokOccupancy() {
+  // Baca dari localStorage: kelompok mana yang sudah berisi 3 siswa
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return {};
+  try {
+    const data = JSON.parse(raw);
+    const occ = {};
+    Object.keys(data).forEach(kelId => {
+      const entry = data[kelId];
+      if (entry && entry.members && entry.members.length) {
+        occ[kelId] = entry.members.length;
+      }
+    });
+    return occ;
+  } catch (e) {
+    return {};
   }
-  const idx = state.teams.length;
-  state.teams.push({
-    name: TEAM_NAMES[idx],
+}
+
+function renderKelompokGrid() {
+  const grid = document.getElementById('kelompok-grid');
+  grid.innerHTML = '';
+
+  const occupancy = getKelompokOccupancy();
+
+  KELOMPOK_DATA.forEach(kel => {
+    const count = occupancy[kel.id] || 0;
+    const isFull = count >= 3;
+    const card = document.createElement('div');
+    card.className = 'kelompok-card' + (isFull ? ' locked' : '');
+    card.dataset.kelId = kel.id;
+
+    let badge = '';
+    if (isFull) {
+      badge = '<div class="kelompok-badge locked-badge">PENUH</div>';
+    } else if (count > 0) {
+      badge = `<div class="kelompok-badge taken-badge">${count}/3</div>`;
+    } else {
+      badge = '<div class="kelompok-badge">KOSONG</div>';
+    }
+
+    card.innerHTML = `
+      ${badge}
+      <div class="kelompok-num">Kelompok</div>
+      <div class="kelompok-title">#${kel.id}</div>
+      <div class="kelompok-members">
+        ${count > 0 ? `Terisi: ${count} siswa` : 'Belum ada siswa'}
+      </div>
+    `;
+
+    if (!isFull) {
+      card.onclick = () => selectKelompok(kel.id);
+    }
+
+    grid.appendChild(card);
+  });
+
+  document.getElementById('kelompok-welcome').textContent =
+    `Selamat datang, ${state.currentUser.nama} (${state.currentUser.kelas})! Pilih salah satu kelompok yang tersedia.`;
+}
+
+function selectKelompok(id) {
+  state.selectedKelompok = id;
+  document.querySelectorAll('.kelompok-card').forEach(c => {
+    c.classList.toggle('selected', parseInt(c.dataset.kelId) === id);
+  });
+  document.getElementById('btn-mulai-kelompok').disabled = false;
+}
+
+function konfirmasiKelompok() {
+  if (!state.selectedKelompok) return;
+  if (!state.currentUser) return;
+
+  // Simpan siswa ke kelompok di localStorage
+  const raw = localStorage.getItem(STORAGE_KEY);
+  let data = raw ? JSON.parse(raw) : {};
+  const key = String(state.selectedKelompok);
+
+  if (!data[key]) {
+    data[key] = { members: [], score: 0, lives: 3, levels: 0, status: 'playing', waktu: '-' };
+  }
+
+  // Cek apakah sudah terdaftar (hindari double)
+  const exists = data[key].members.some(m => m.nama === state.currentUser.nama && m.kelas === state.currentUser.kelas);
+  if (!exists) {
+    if (data[key].members.length >= 3) {
+      toast('❌ Kelompok ini sudah penuh!', 'no');
+      renderKelompokGrid();
+      return;
+    }
+    data[key].members.push({
+      nama: state.currentUser.nama,
+      kelas: state.currentUser.kelas,
+    });
+  }
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+  // Setup tim berdasarkan anggota kelompok
+  setupTeamsFromKelompok();
+  showScreen('screen-setup');
+  renderTeamInputs();
+}
+
+function setupTeamsFromKelompok() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  const data = raw ? JSON.parse(raw) : {};
+  const kel = data[String(state.selectedKelompok)];
+  const members = kel ? kel.members : [];
+
+  // Buat tim untuk setiap anggota (individual scoring di dalam kelompok)
+  state.teams = members.map((m, i) => ({
+    name: m.nama,
     score: 0,
     lives: 3,
-    color: TEAM_COLORS[idx],
+    color: ['t1', 't2', 't3', 't4'][i % 4],
+    powerups: { hint: 1, fifty: 1, time: 1 },
+    streak: 0,
+  }));
+
+  // Minimal 1 tim (bisa ditambah manual oleh admin)
+  if (state.teams.length === 0) {
+    state.teams = [{
+      name: 'Tim Alpha', score: 0, lives: 3, color: 't1',
+      powerups: { hint: 1, fifty: 1, time: 1 }, streak: 0
+    }];
+  }
+}
+
+function backToKelompok() {
+  renderKelompokGrid();
+  showScreen('screen-kelompok');
+}
+
+/* ============================================================
+   TEAM MANAGEMENT (SETUP)
+   ============================================================ */
+const TEAM_COLORS = ['t1', 't2', 't3', 't4'];
+
+function addTeam() {
+  if (state.teams.length >= 4) return toast('Maksimal 4 tim!', 'warn');
+  const idx = state.teams.length;
+  state.teams.push({
+    name: 'Anggota ' + (idx + 1),
+    score: 0, lives: 3,
+    color: TEAM_COLORS[idx % 4],
     powerups: { hint: 1, fifty: 1, time: 1 },
     streak: 0,
   });
@@ -1208,10 +1459,7 @@ function addTeam() {
 }
 
 function removeTeam(i) {
-  if (state.teams.length <= 2) {
-    toast("Minimal 2 tim!", "warn");
-    return;
-  }
+  if (state.teams.length <= 1) return toast('Minimal 1 tim!', 'warn');
   state.teams.splice(i, 1);
   renderTeamInputs();
 }
@@ -1223,9 +1471,9 @@ function renderTeamInputs() {
     const div = document.createElement('div');
     div.className = 'team-input';
     div.innerHTML = `
-      <div class="team-badge ${t.color}">${String.fromCharCode(65 + i)}</div>
-      <input type="text" value="${t.name}" maxlength="20"
-             oninput="state.teams[${i}].name = this.value || 'Tim ${String.fromCharCode(65 + i)}'">
+      <div class="team-badge ${t.color}">${i + 1}</div>
+      <input type="text" value="${escapeHtml(t.name)}" maxlength="20"
+             oninput="state.teams[${i}].name = this.value || 'Anggota ${i + 1}'">
       <button class="btn-remove" onclick="removeTeam(${i})">×</button>
     `;
     list.appendChild(div);
@@ -1237,23 +1485,25 @@ function renderTeamInputs() {
    GAME START
    ============================================================ */
 function startGame() {
-  if (state.teams.length < 2) {
-    toast("Minimal 2 tim untuk bermain!", "warn");
-    return;
-  }
+  if (state.teams.length < 1) return toast('Minimal 1 tim!', 'warn');
+
   state.completedLevels.clear();
   state.currentTeamIndex = 0;
   state.totalTimeLeft = 45 * 60;
+  state.gameStartTime = Date.now();
   state.teams.forEach(t => { t.score = 0; t.lives = 3; t.streak = 0; });
+
+  // Update info kelompok di HUD
+  document.getElementById('hud-kelompok').textContent = `#${state.selectedKelompok}`;
 
   startTotalTimer();
   renderBoard();
   showScreen('screen-board');
-  toast("Game dimulai! Semoga berhasil 🎮", "ok");
+  toast('Game dimulai! Semoga berhasil 🎮', 'ok');
 }
 
 /* ============================================================
-   TOTAL TIMER (45 MINUTES)
+   TIMERS
    ============================================================ */
 function startTotalTimer() {
   if (state.totalTimerInterval) clearInterval(state.totalTimerInterval);
@@ -1278,10 +1528,9 @@ function updateTotalTimerDisplay() {
 }
 
 /* ============================================================
-   BOARD RENDERING
+   BOARD
    ============================================================ */
 function renderBoard() {
-  // Scoreboard
   const sb = document.getElementById('scoreboard');
   sb.innerHTML = state.teams.map((t, i) => `
     <div class="score-card ${i === state.currentTeamIndex ? 'active-turn' : ''}">
@@ -1291,7 +1540,6 @@ function renderBoard() {
     </div>
   `).join('');
 
-  // Levels
   const lg = document.getElementById('levels-grid');
   lg.innerHTML = LEVELS.map(lv => {
     const done = state.completedLevels.has(lv.id);
@@ -1306,14 +1554,13 @@ function renderBoard() {
     `;
   }).join('');
 
-  // HUD
   document.getElementById('hud-level').textContent = `${state.completedLevels.size} / ${state.totalLevels}`;
   document.getElementById('hud-turn').textContent = state.teams[state.currentTeamIndex].name;
   updateTotalTimerDisplay();
 }
 
 /* ============================================================
-   LEVEL START — SPIN WHEEL
+   LEVEL & SPIN WHEEL
    ============================================================ */
 function startLevel(levelId) {
   const level = LEVELS.find(l => l.id === levelId);
@@ -1329,7 +1576,6 @@ function startLevel(levelId) {
   showSpinModal();
 }
 
-/* ---------- SPIN WHEEL ---------- */
 function showSpinModal() {
   const overlay = document.getElementById('spin-overlay');
   overlay.classList.add('active');
@@ -1338,11 +1584,10 @@ function showSpinModal() {
   document.getElementById('btn-spin').style.display = 'inline-block';
   document.getElementById('btn-skip-spin').style.display = 'none';
 
-  // Build wheel segments (visual only — we use a simple CSS conic gradient)
   const wheel = document.getElementById('wheel');
   const n = WHEEL_SEGMENTS.length;
   const anglePer = 360 / n;
-  let gradientParts = [];
+  const gradientParts = [];
   WHEEL_SEGMENTS.forEach((seg, i) => {
     const start = i * anglePer;
     const end = start + anglePer;
@@ -1350,7 +1595,6 @@ function showSpinModal() {
   });
   wheel.style.background = `conic-gradient(${gradientParts.join(', ')})`;
 
-  // Add labels (rotated)
   wheel.querySelectorAll('.wheel-segment').forEach(e => e.remove());
   WHEEL_SEGMENTS.forEach((seg, i) => {
     const el = document.createElement('div');
@@ -1367,13 +1611,10 @@ function spinWheel() {
   const btn = document.getElementById('btn-spin');
   btn.disabled = true;
 
-  // Random result
   const idx = Math.floor(Math.random() * WHEEL_SEGMENTS.length);
   const seg = WHEEL_SEGMENTS[idx];
   const n = WHEEL_SEGMENTS.length;
   const anglePer = 360 / n;
-  // We want segment idx to land at top (0deg pointer). Total rotation:
-  // Target angle so that segment center aligns with top.
   const targetAngle = 360 * 5 + (360 - (idx * anglePer + anglePer / 2));
   const wheel = document.getElementById('wheel');
   wheel.style.transform = `rotate(${targetAngle}deg)`;
@@ -1403,18 +1644,16 @@ function skipSpin() {
 }
 
 /* ============================================================
-   QUESTION LOADING
+   QUESTION
    ============================================================ */
 function loadQuestion() {
   const team = state.teams[state.currentTeamIndex];
   const level = state.currentLevel;
   const q = state.currentQuestions[state.currentQuestionIndex];
 
-  // Reset power-ups for this question
   state.powerupsUsed = { hint: false, fifty: false, time: false };
   state.answered = false;
 
-  // Update HUD
   document.getElementById('q-level').textContent = level.id;
   document.getElementById('q-team').textContent = team.name;
   document.getElementById('q-points').textContent = level.points * state.bonusMultiplier;
@@ -1424,13 +1663,11 @@ function loadQuestion() {
     level.difficulty === 'easy' ? 'MUDAH' : level.difficulty === 'medium' ? 'MENENGAH' : 'SULIT';
   document.getElementById('q-difficulty').className = `q-badge ${level.difficulty === 'easy' ? 'easy' : level.difficulty === 'medium' ? 'med' : 'hard'}`;
 
-  // Question text
   document.getElementById('q-text').textContent = q.text;
   const hintEl = document.getElementById('q-hint');
   hintEl.textContent = '💡 Petunjuk: ' + q.hint;
   hintEl.classList.remove('show');
 
-  // Options
   const opts = document.getElementById('options');
   opts.innerHTML = '';
   const labels = ['A', 'B', 'C', 'D'];
@@ -1442,28 +1679,18 @@ function loadQuestion() {
     opts.appendChild(btn);
   });
 
-  // Feedback
   const fb = document.getElementById('feedback');
   fb.className = 'feedback';
   fb.textContent = '';
 
-  // Next button hidden
   document.getElementById('btn-next').style.display = 'none';
-
-  // Power-up buttons
   updatePowerupButtons();
-
-  // Show question screen
   showScreen('screen-question');
 
-  // Start question timer
   const totalTime = level.time + state.bonusTime;
   startQuestionTimer(totalTime);
 }
 
-/* ============================================================
-   QUESTION TIMER
-   ============================================================ */
 function startQuestionTimer(seconds) {
   if (state.questionTimerInterval) clearInterval(state.questionTimerInterval);
   state.questionMaxTime = seconds;
@@ -1500,12 +1727,12 @@ function timeUp() {
   });
   const fb = document.getElementById('feedback');
   fb.className = 'feedback show no';
-  fb.innerHTML = `⏰ Waktu habis! Jawaban yang benar: <strong>${escapeHtml(q.options[q.correct])}</strong>`;
+  fb.innerHTML = `⏰ Waktu habis! Jawaban benar: <strong>${escapeHtml(q.options[q.correct])}</strong>`;
   handleWrongAnswer(true);
 }
 
 /* ============================================================
-   ANSWER SELECTION
+   ANSWER
    ============================================================ */
 function selectAnswer(selectedIndex, btnEl) {
   if (state.answered) return;
@@ -1545,37 +1772,27 @@ function selectAnswer(selectedIndex, btnEl) {
     fb.innerHTML = `❌ Salah. Jawaban benar: <strong>${escapeHtml(q.options[q.correct])}</strong>`;
   }
 
-  // Update score display
   renderBoard();
   document.getElementById('btn-next').style.display = 'inline-block';
 }
 
-function handleWrongAnswer(isTimeUp) {
+function handleWrongAnswer() {
   const team = state.teams[state.currentTeamIndex];
   team.lives = Math.max(0, team.lives - 1);
   team.streak = 0;
-  if (team.lives === 0) {
-    toast(`💔 ${team.name} kehabisan nyawa!`, 'no');
-  } else {
-    toast(`💔 Nyawa berkurang (sisa ${team.lives})`, 'no');
-  }
+  if (team.lives === 0) toast(`💔 ${team.name} kehabisan nyawa!`, 'no');
+  else toast(`💔 Nyawa berkurang (sisa ${team.lives})`, 'no');
   renderBoard();
-  if (!isTimeUp) {
-    document.getElementById('btn-next').style.display = 'inline-block';
-  } else {
-    document.getElementById('btn-next').style.display = 'inline-block';
-  }
+  document.getElementById('btn-next').style.display = 'inline-block';
 }
 
 /* ============================================================
-   NEXT QUESTION / NEXT LEVEL
+   NEXT
    ============================================================ */
 function nextQuestionOrLevel() {
   state.currentQuestionIndex++;
   if (state.currentQuestionIndex >= state.currentQuestions.length) {
-    // Level done
     state.completedLevels.add(state.currentLevel.id);
-    // Rotate team
     state.currentTeamIndex = (state.currentTeamIndex + 1) % state.teams.length;
     renderBoard();
 
@@ -1639,15 +1856,35 @@ function usePowerUp(type) {
 }
 
 /* ============================================================
-   END GAME
+   END GAME — SIMPAN KE LOCALSTORAGE
    ============================================================ */
 function endGame(timeUp) {
   if (state.totalTimerInterval) clearInterval(state.totalTimerInterval);
   if (state.questionTimerInterval) clearInterval(state.questionTimerInterval);
 
-  // Sort teams
-  const sorted = [...state.teams].sort((a, b) => b.score - a.score);
+  // Hitung total skor & rata-rata tim
+  const totalScore = state.teams.reduce((s, t) => s + t.score, 0);
+  const avgScore = Math.round(totalScore / state.teams.length);
+  const totalLives = state.teams.reduce((s, t) => s + t.lives, 0);
 
+  // Simpan hasil ke kelompok
+  const raw = localStorage.getItem(STORAGE_KEY);
+  const data = raw ? JSON.parse(raw) : {};
+  const key = String(state.selectedKelompok);
+  if (data[key]) {
+    data[key].score = totalScore;
+    data[key].lives = totalLives;
+    data[key].levels = state.completedLevels.size;
+    data[key].status = 'selesai';
+    const durasi = state.gameStartTime
+      ? Math.round((Date.now() - state.gameStartTime) / 1000)
+      : 0;
+    data[key].waktu = `${Math.floor(durasi / 60)}m ${durasi % 60}s`;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  // Leaderboard
+  const sorted = [...state.teams].sort((a, b) => b.score - a.score);
   const lb = document.getElementById('leaderboard');
   lb.innerHTML = sorted.map((t, i) => {
     const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i + 1}.`;
@@ -1661,6 +1898,9 @@ function endGame(timeUp) {
     `;
   }).join('');
 
+  document.getElementById('result-sub').textContent =
+    `Kelompok #${state.selectedKelompok} • Total skor ${totalScore} • Rata-rata ${avgScore} • Level selesai ${state.completedLevels.size}/9`;
+
   showScreen('screen-result');
   if (!timeUp) {
     toast("🏆 Game selesai!", "ok");
@@ -1668,6 +1908,121 @@ function endGame(timeUp) {
   } else {
     toast("⏰ Waktu 45 menit habis!", "warn");
   }
+}
+
+/* ============================================================
+   ADMIN PANEL
+   ============================================================ */
+function loadAdminData() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  const data = raw ? JSON.parse(raw) : {};
+  const tbody = document.getElementById('admin-tbody');
+  const empty = document.getElementById('admin-empty');
+  const tableWrap = document.querySelector('.admin-table-wrap');
+
+  // Kumpulkan semua siswa
+  const rows = [];
+  let no = 1;
+  Object.keys(data).sort((a, b) => Number(a) - Number(b)).forEach(kelId => {
+    const kel = data[kelId];
+    if (!kel || !kel.members) return;
+    kel.members.forEach(m => {
+      rows.push({
+        no: no++,
+        nama: m.nama,
+        kelas: m.kelas,
+        kelompok: `#${kelId}`,
+        skor: kel.score || 0,
+        nyawa: kel.lives !== undefined ? kel.lives : 3,
+        levels: kel.levels || 0,
+        status: kel.status || 'pending',
+        waktu: kel.waktu || '-',
+      });
+    });
+  });
+
+  tbody.innerHTML = rows.map(r => {
+    const statusBadge = r.status === 'selesai'
+      ? '<span class="badge-soft done">✓ SELESAI</span>'
+      : '<span class="badge-soft pending">⏳ BERMAIN</span>';
+    const livesStr = '❤️'.repeat(Math.min(3, r.nyawa)) + '🖤'.repeat(Math.max(0, 3 - r.nyawa));
+    return `
+      <tr>
+        <td>${r.no}</td>
+        <td><strong>${escapeHtml(r.nama)}</strong></td>
+        <td>${escapeHtml(r.kelas)}</td>
+        <td>${r.kelompok}</td>
+        <td><strong style="color:var(--accent)">${r.skor}</strong></td>
+        <td>${livesStr}</td>
+        <td>${r.levels}/9</td>
+        <td>${statusBadge}</td>
+        <td>${r.waktu}</td>
+      </tr>
+    `;
+  }).join('');
+
+  if (rows.length === 0) {
+    empty.style.display = 'block';
+    tableWrap.style.display = 'none';
+  } else {
+    empty.style.display = 'none';
+    tableWrap.style.display = 'block';
+  }
+
+  // Statistik
+  const totalSiswa = rows.length;
+  const totalKelompok = Object.keys(data).filter(k => data[k].members && data[k].members.length > 0).length;
+  const sudahBermain = rows.filter(r => r.status === 'selesai').length;
+  const avg = totalSiswa > 0 ? Math.round(rows.reduce((s, r) => s + r.skor, 0) / totalSiswa) : 0;
+
+  document.getElementById('stat-total').textContent = totalSiswa;
+  document.getElementById('stat-kelompok').textContent = totalKelompok;
+  document.getElementById('stat-played').textContent = sudahBermain;
+  document.getElementById('stat-avg').textContent = avg;
+
+  // Print date
+  const d = new Date();
+  document.getElementById('print-date').textContent =
+    d.toLocaleString('id-ID', { dateStyle: 'full', timeStyle: 'short' });
+}
+
+function clearAllData() {
+  if (!confirm('⚠️ Yakin ingin menghapus SEMUA data hasil siswa? Tindakan ini tidak bisa dibatalkan.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  toast('🗑️ Semua data telah dihapus', 'warn');
+  loadAdminData();
+}
+
+function exportCSV() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  const data = raw ? JSON.parse(raw) : {};
+  const rows = [['No', 'Nama', 'Kelas', 'Kelompok', 'Skor', 'Nyawa', 'Level Selesai', 'Status', 'Waktu']];
+  let no = 1;
+
+  Object.keys(data).sort((a, b) => Number(a) - Number(b)).forEach(kelId => {
+    const kel = data[kelId];
+    if (!kel || !kel.members) return;
+    kel.members.forEach(m => {
+      rows.push([
+        no++, m.nama, m.kelas, `#${kelId}`,
+        kel.score || 0,
+        kel.lives !== undefined ? kel.lives : 3,
+        `${kel.levels || 0}/9`,
+        kel.status || 'pending',
+        kel.waktu || '-'
+      ]);
+    });
+  });
+
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `rekap_von_neumann_${new Date().toISOString().slice(0, 10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('📥 File CSV berhasil diunduh!', 'ok');
 }
 
 /* ============================================================
@@ -1717,6 +2072,10 @@ function playConfetti(count = 60) {
    ============================================================ */
 window.addEventListener('load', () => {
   updateTotalTimerDisplay();
+  // Enter key untuk login siswa
+  document.getElementById('siswa-kelas').addEventListener('keydown', e => {
+    if (e.key === 'Enter') loginSiswa();
+  });
 });
 </script>
 </body>
